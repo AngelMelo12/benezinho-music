@@ -40,5 +40,4 @@ public class MusicaService implements Service<Musica, Integer>{
         return Objects.isNull(musica.getNome()) || musica.getNome().isBlank();
     }
 
-
 }
