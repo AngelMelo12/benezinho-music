@@ -6,38 +6,35 @@ import br.com.fiap.domain.repository.MusicaRepository;
 import java.util.List;
 import java.util.Objects;
 
-public class MusicaService implements Service<Musica, Integer>{
+public class MusicaService implements Service<Musica, Long>{
+
+    private MusicaRepository repository;
+
+    public MusicaService() {
+        repository = new MusicaRepository();
+    }
 
     @Override
     public List<Musica> findAll() {
-        return null;
+
+        return repository.findAll();
     }
 
     @Override
     public Musica findById(Integer id) {
-        return null;
+        return repository.findById( id );
     }
 
     @Override
     public List<Musica> findByName(String texto) {
-        return null;
+
+        return repository.findByName( texto );
     }
 
     @Override
     public Musica persist(Musica musica) {
+        return repository.persist( musica );
 
-        if (isValidMusica(musica)) {
-            return null;
-        }
-
-        if (Objects.isNull(musica.getId()))
-            return null;
-
-        return MusicaRepository.persist(musica);
-    }
-
-    private static boolean isValidMusica(Musica musica) {
-        return Objects.isNull(musica.getNome()) || musica.getNome().isBlank();
     }
 
 }
