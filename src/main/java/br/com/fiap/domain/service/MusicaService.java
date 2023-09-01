@@ -21,9 +21,10 @@ public class MusicaService implements Service<Musica, Long>{
     }
 
     @Override
-    public Musica findById(Integer id) {
-        return repository.findById( id );
+    public Musica findById(Long id) {
+        return null;
     }
+
 
     @Override
     public List<Musica> findByName(String texto) {
@@ -35,6 +36,11 @@ public class MusicaService implements Service<Musica, Long>{
     public Musica persist(Musica musica) {
         return repository.persist( musica );
 
+    }
+
+    @Override
+    public boolean valido(String s) {
+        return Service.super.valido(s);
     }
 
 }

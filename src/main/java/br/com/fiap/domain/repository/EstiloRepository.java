@@ -21,7 +21,7 @@ public class EstiloRepository implements Repository<Estilo, Long>{
     }
 
     @Override
-    public Estilo findById(Integer id) {
+    public Estilo findById(Long id) {
 
         return estilos.stream().filter( e -> e.getId().equals( id ) ).findFirst().orElse( null );
     }

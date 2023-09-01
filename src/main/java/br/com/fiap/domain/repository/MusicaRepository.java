@@ -22,7 +22,7 @@ public class MusicaRepository implements Repository<Musica, Long> {
     }
 
     @Override
-    public Musica findById(Integer id) {
+    public Musica findById(Long id) {
 
         return musicas.stream()
                 .filter( m -> m.getId().equals( id ) )

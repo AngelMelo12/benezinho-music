@@ -21,7 +21,7 @@ public class ArtistaService implements Service<Artista, Long>{
     }
 
     @Override
-    public Artista findById(Integer id) {
+    public Artista findById(Long id) {
         return repository.findById( id );
     }
 
