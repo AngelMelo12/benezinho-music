@@ -6,37 +6,36 @@ import br.com.fiap.domain.repository.EstiloRepository;
 import java.util.List;
 import java.util.Objects;
 
-public class EstiloService implements Service<Estilo, Integer>{
+public class EstiloService implements Service<Estilo, Long>{
 
-    @Override
-    public List<Estilo> findAll() {
-        return null;
+    private EstiloRepository repository;
+
+    public EstiloService() {
+        repository =  new EstiloRepository();
     }
 
     @Override
-    public Estilo findById(Integer id) {
-        return null;
+    public List<Estilo> findAll() {
+
+        return repository.findAll();
+    }
+
+    @Override
+    public Estilo findById(Long id) {
+        return repository.findById( id );
     }
 
     @Override
     public List<Estilo> findByName(String texto) {
-        return null;
+
+        return repository.findByName( texto );
     }
 
     @Override
     public Estilo persist(Estilo estilo) {
+        return repository.persist( estilo );
 
-        if (isValidEstilo(estilo)) {
-            return null;
-        }
-        if (Objects.isNull(estilo.getId()))
-            return null;
 
-        return EstiloRepository.persist(estilo);
-    }
-
-    private static boolean isValidEstilo(Estilo estilo) {
-        return Objects.isNull(estilo.getNome()) || estilo.getNome().isBlank();
     }
 
 
