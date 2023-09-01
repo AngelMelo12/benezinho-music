@@ -6,38 +6,33 @@ import br.com.fiap.domain.repository.ArtistaRepository;
 import java.util.List;
 import java.util.Objects;
 
-public class ArtistaService implements Service<Artista, Integer>{
+public class ArtistaService implements Service<Artista, Long>{
+
+    private ArtistaRepository repository;
+
+    public ArtistaService() {
+        repository = new ArtistaRepository();
+    }
 
     @Override
     public List<Artista> findAll() {
-        return null;
+
+        return repository.findAll();
     }
 
     @Override
     public Artista findById(Integer id) {
-        return null;
+        return repository.findById( id );
     }
 
     @Override
     public List<Artista> findByName(String texto) {
-        return null;
+        return repository.findByName( texto );
     }
 
     @Override
     public Artista persist(Artista artista) {
-
-        if (isValidArtista(artista))  {
-            return null;
-        }
-        if (Objects.isNull(artista.getId()))
-            return null;
-
-        return ArtistaRepository.persist(artista);
+        return repository.persist( artista );
     }
-
-    private static boolean isValidArtista(Artista artista) {
-        return Objects.isNull(artista.getNome()) || artista.getNome().isBlank();
-    }
-
 
 }
